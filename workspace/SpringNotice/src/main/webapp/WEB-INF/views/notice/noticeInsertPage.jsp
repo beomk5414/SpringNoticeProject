@@ -23,6 +23,12 @@
 			location.href = 'loginPage.do';
 			return;
 		}
+		if('${loginDto.role}' == 'USER'){
+			alert('접근 권한이 없습니다.');
+			location.href = 'index.do';
+			return;
+		}
+		
 	}
 	
 	function fn_goList(f){
