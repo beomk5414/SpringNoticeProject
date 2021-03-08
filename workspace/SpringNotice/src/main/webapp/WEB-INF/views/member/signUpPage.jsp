@@ -3,7 +3,7 @@
 
 <%-- header.jsp --%>
 <jsp:include page="../template/header.jsp" >
-    <jsp:param value="SignUp" name="title"/>
+    <jsp:param value="SignUp Page" name="title"/>
 </jsp:include>
 
 <script type="text/javascript">

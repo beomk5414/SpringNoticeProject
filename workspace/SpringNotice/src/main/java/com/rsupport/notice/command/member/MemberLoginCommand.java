@@ -21,12 +21,18 @@ public class MemberLoginCommand implements MemberCommand {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		System.out.println("id: " + id);
+		System.out.println("pw: " + pw);
 		
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
 		MemberDto memberDto = memberMapper.loginMember(id,pw);
-		model.addAttribute("loginDto", memberDto);
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("loginDto", memberDto);
+		if(memberDto != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginDto", memberDto);
+
+		} else {
+			HttpSession session = request.getSession();
+			session.invalidate();
+		}
 	}
 }

@@ -3,6 +3,7 @@ package com.rsupport.notice.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.rsupport.notice.command.member.IdCheckCommand;
 import com.rsupport.notice.command.member.MemberCommand;
 import com.rsupport.notice.command.member.MemberInsertCommand;
 import com.rsupport.notice.command.member.MemberLoginCommand;
+import com.rsupport.notice.command.member.MemberLogoutCommand;
 import com.rsupport.notice.command.member.SignUpCheckCommand;
 
 @Controller
@@ -54,14 +56,25 @@ public class MemberController {
 		return "member/loginPage";
 	}
 
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, Model model) {
 		model.addAttribute("request",request);
 		command = new MemberLoginCommand();
 		command.execute(sqlSession, model);
-		Map<String, Object> map = model.asMap();
-		int result = (int)map.get("loginResult");
-		return "redirect:index.do?loginResult=" + result;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("loginDto") != null) {
+			return "redirect:index.do";
+		}else {
+			return "redirect:loginPage.do?loginResult=0";
+		}
+	}
+
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, Model model) {
+		model.addAttribute("request",request);
+		command = new MemberLogoutCommand();
+		command.execute(sqlSession, model);
+		return "redirect:index.do";
 	}
 	
 	

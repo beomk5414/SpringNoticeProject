@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>    
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -42,13 +44,19 @@
 		<div class="container">
 		<nav>
 			<ul class="nav nav-pills pull-right">
-				<!-- <li role="presentation" class="active"><a href="/">Home</a></li> -->
-				<li role="presentation"><a href="loginPage.do">로그인</a></li>
-				<li role="presentation"><a href="signUpPage.do">회원가입</a></li>
-				<li role="presentation"><a href="#">공지사항</a></li>
+				<c:if test="${loginDto eq null}">
+					<li role="presentation"><a href="loginPage.do">로그인</a></li>
+					<li role="presentation"><a href="signUpPage.do">회원가입</a></li>
+					<li role="presentation"><a href="noticeListPage.do">공지사항</a></li>
+				</c:if>
+				<c:if test="${loginDto ne null}">
+					<li role="presentation"><span style="line-height: 40px;">${loginDto.name}님 환영합니다!&nbsp;&nbsp;</span></li>
+					<li role="presentation"><a href="logout.do">로그아웃</a></li>
+					<li role="presentation"><a href="noticeListPage.do">공지사항</a></li>
+				</c:if>
 			</ul>
 		</nav>
 		<a href="/"><h3 class="text-muted">Spring Notice</h3></a>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container body-min-height">
