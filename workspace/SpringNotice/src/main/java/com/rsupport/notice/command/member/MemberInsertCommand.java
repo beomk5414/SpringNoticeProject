@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.rsupport.notice.common.Sha256;
 import com.rsupport.notice.dto.MemberDto;
 import com.rsupport.notice.mapper.MemberMapper;
 
@@ -19,7 +20,7 @@ public class MemberInsertCommand implements MemberCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		String pw = Sha256.sha256(request.getParameter("pw"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");

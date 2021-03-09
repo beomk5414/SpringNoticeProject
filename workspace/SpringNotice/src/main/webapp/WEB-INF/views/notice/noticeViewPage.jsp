@@ -60,8 +60,8 @@ function fn_noticeUpdatePage(f){
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-2 control-label">첨부</label>
-				<div class="col-sm-5">
+				<label for="inputEmail3" class="col-sm-2 control-label">첨부 파일</label>
+				<div class="col-sm-9">
 					<c:if test="${noticeDto.filename ne '' && not empty noticeDto.filename }">
 						<input type="hidden" name="filename" value="${noticeDto.filename}">
 						<c:set var="filenameList" value="${fn:split(noticeDto.filename,'&')}"/>

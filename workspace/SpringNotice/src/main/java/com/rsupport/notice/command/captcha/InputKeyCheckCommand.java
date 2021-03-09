@@ -1,4 +1,4 @@
-package com.rsupport.notice.command.notice;
+package com.rsupport.notice.command.captcha;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class InputKeyCheckCommand implements CaptchaCommand {
 
 		String code = "1"; // 키 발급시 0, 캡차 이미지 비교시 1로 세팅
 
-		// session에서 key 가져오면 발급 받은 캡차 발급 키를 알 수 있다.
+		// session에서 발급 받은 캡차 발급 키 꺼내기 
 		HttpSession session = request.getSession();
 		String key = (String)session.getAttribute("key"); // 캡차 키 발급시 받은 키값
 		String value = request.getParameter("input_key"); // 사용자가 입력한 캡차 이미지 글자값
@@ -39,12 +39,6 @@ public class InputKeyCheckCommand implements CaptchaCommand {
 		requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 		String responseBody = get(apiURL, requestHeaders);
 
-		System.out.println(responseBody);
-		// responseBody
-		// 성공: {"result":true,"responseTime":21.39}
-		// 실패: {"result":false,"responseTime":5.76}
-		
-		// result를 responseBody에서 꺼낸다.
 		JSONParser parser = new JSONParser();
 		JSONObject obj = null;
 		try {

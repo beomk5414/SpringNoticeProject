@@ -1,4 +1,4 @@
-package com.rsupport.notice.command.notice;
+package com.rsupport.notice.command.captcha;
 
 import java.util.Map;
 

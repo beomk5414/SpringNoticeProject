@@ -33,6 +33,9 @@ dependencies {
 	// json-simple 
 	implementation 'com.googlecode.json-simple:json-simple:1.1'
 	
+	// https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+	implementation 'commons-codec:commons-codec:1.15'
+	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'

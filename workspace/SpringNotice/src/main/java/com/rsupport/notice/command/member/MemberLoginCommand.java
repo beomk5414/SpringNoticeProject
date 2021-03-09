@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.ui.Model;
 
+import com.rsupport.notice.common.Sha256;
 import com.rsupport.notice.dto.MemberDto;
 import com.rsupport.notice.mapper.MemberMapper;
 
@@ -20,9 +21,7 @@ public class MemberLoginCommand implements MemberCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		System.out.println("id: " + id);
-		System.out.println("pw: " + pw);
+		String pw = Sha256.sha256(request.getParameter("pw"));
 		
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
 		MemberDto memberDto = memberMapper.loginMember(id,pw);

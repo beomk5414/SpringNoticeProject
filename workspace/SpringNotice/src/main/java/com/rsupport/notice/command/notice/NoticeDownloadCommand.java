@@ -27,14 +27,12 @@ public class NoticeDownloadCommand implements NoticeCommand {
 		HttpServletResponse response = (HttpServletResponse) map.get("response");
 
 		String filename = request.getParameter("filename");
-
 		String realPath = request.getServletContext().getRealPath("resources/storage/notice");
 
 		String extension = filename.substring(filename.lastIndexOf(".")); 
 		String originalFilename = filename.substring(0, filename.lastIndexOf("_"));
 
 		String downloadFilename = originalFilename + extension;
-
 		File file = new File(realPath, filename);
 
 		BufferedInputStream bis = null;

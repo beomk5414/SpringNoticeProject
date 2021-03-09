@@ -17,9 +17,6 @@
 	}
 	function fn_fileRemove(filename, index){
 		$('<input/>', {type: 'hidden', name: 'removeFile', value: filename }).appendTo('#removeFile')
-		/* var text = '<input type="hidden" name="removeFile" value="' + filename + '">'
-		$('#removeFile').append(text); */
-		/* $(this).parents.remove(); */
 		$('#file-' + index).remove(); 
 		$('#filename-' + index).attr('name','removeFilename'); 
 	}
@@ -60,6 +57,7 @@
 			<br/>
 			<div class="form-group text-center mb50">
 				<input type="hidden" name="no" value="${noticeDto.no}">
+				<input type="hidden" name="page" value="${page}">
 				<input class="btn btn-primary" type="button" value="수정 하기" onclick="fn_noticeUpdate(this.form)"/>
 				<input class="btn btn-default" type="button" value="뒤로가기" onclick="location.href = 'noticeViewPage.do?no=${noticeDto.no}&page=${page}'"/>
 			</div>
@@ -81,7 +79,6 @@
 			bUseVerticalResizer : false, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
 			bUseModeChanger : false } // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
 	});
-	
 	
 	function fn_noticeUpdate(f){
 		
@@ -106,6 +103,5 @@
 		}else { 
 			return; 
 		}
-		
 	}
 </script>

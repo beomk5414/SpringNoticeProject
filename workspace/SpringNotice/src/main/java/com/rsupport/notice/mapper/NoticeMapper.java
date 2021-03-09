@@ -11,8 +11,8 @@ public interface NoticeMapper {
 	
 	List<NoticeDto> list(int beginRecord, int endRecord);
 	int totalRecord();
-	int insert(String writer, String title, String content, String filename);
+	void insert(String writer, String title, String content, String filename);
 	NoticeDto view(int no);
-	int delete(int no);
-	int update(String title, String content, String filename, int no);
+	void delete(int no);
+	void update(String title, String content, String filename, int no);
 }

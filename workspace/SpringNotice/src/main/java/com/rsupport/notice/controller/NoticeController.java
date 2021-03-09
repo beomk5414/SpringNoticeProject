@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.rsupport.notice.command.notice.CaptchaCommand;
-import com.rsupport.notice.command.notice.GetImageCaptchaCommand;
-import com.rsupport.notice.command.notice.InputKeyCheckCommand;
+import com.rsupport.notice.command.captcha.CaptchaCommand;
+import com.rsupport.notice.command.captcha.GetImageCaptchaCommand;
+import com.rsupport.notice.command.captcha.InputKeyCheckCommand;
 import com.rsupport.notice.command.notice.NoticeCommand;
 import com.rsupport.notice.command.notice.NoticeDeleteCommand;
 import com.rsupport.notice.command.notice.NoticeDownloadCommand;
@@ -90,7 +90,9 @@ public class NoticeController {
 		model.addAttribute("multipartRequest", multipartRequest);
 		command = new NoticeUpdateCommand();
 		command.execute(sqlSession, model);
-		return "redirect:noticeListPage.do";
+		String page = multipartRequest.getParameter("page");
+		String no = multipartRequest.getParameter("no");
+		return "redirect:noticeViewPage.do?no=" + no + "&page=" + page;
 	}
 
 	@RequestMapping(value = "noticeDelete.do", method = RequestMethod.POST)

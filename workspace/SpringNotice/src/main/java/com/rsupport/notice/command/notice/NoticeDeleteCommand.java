@@ -30,14 +30,14 @@ public class NoticeDeleteCommand implements NoticeCommand {
 		// 첨부가 있으면 첨부파일 삭제
 		String filenames = request.getParameter("filename");
 		String realPath = request.getServletContext().getRealPath("resources/storage/notice");
-		String[] filenameList = filenames.split("&");
-		for (String filename : filenameList) {
-			File file = new File(realPath, filename);
-			if (file.exists()) {
-				file.delete();
+		if(filenames != null && !filenames.isEmpty()) {
+			String[] filenameList = filenames.split("&");
+			for (String filename : filenameList) {
+				File file = new File(realPath, filename);
+				if (file.exists()) {
+					file.delete();
+				}
 			}
 		}
-
 	}
-
 }

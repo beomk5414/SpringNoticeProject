@@ -2,17 +2,17 @@
 INSERT 
   INTO MEMBER
        (ID, PW, NAME, GENDER, EMAIL, ROLE, REGDATE)
-VALUES ('admin', '1234', '관리자', 'Male', 'admin@rsupport.com', 'ADMIN', CURRENT_TIMESTAMP);	
+VALUES ('admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '관리자', 'Male', 'admin@rsupport.com', 'ADMIN', CURRENT_TIMESTAMP);	
 
 INSERT 
   INTO MEMBER
        (ID, PW, NAME, GENDER, EMAIL, ROLE, REGDATE)
-VALUES ('user1', '1234', '사용자1', 'Male', 'user1@rsupport.com', 'USER', CURRENT_TIMESTAMP);	
+VALUES ('user1', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '사용자1', 'Male', 'user1@rsupport.com', 'USER', CURRENT_TIMESTAMP);	
 
 INSERT 
   INTO MEMBER
        (ID, PW, NAME, GENDER, EMAIL, ROLE, REGDATE)
-VALUES ('user2', '1234', '사용자2', 'Male', 'user2@rsupport.com', 'USER', CURRENT_TIMESTAMP);	
+VALUES ('user2', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '사용자2', 'Male', 'user2@rsupport.com', 'USER', CURRENT_TIMESTAMP);	
 
 -- NOTICE
 INSERT
@@ -34,14 +34,14 @@ VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.',
 INSERT
   INTO NOTICE
        (WRITER, TITLE, CONTENT, FILENAME, REGDATE, LASTEDITED)
-VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'qr_code_1615182105575.png&qr_code2_1615182105576.png&qr_code3_1615182105576.png&', '2021-03-06', '2021-03-06');
+VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'example3_1615269758076.jpg&', '2021-03-06', '2021-03-06');
 INSERT
   INTO NOTICE
        (WRITER, TITLE, CONTENT, FILENAME, REGDATE, LASTEDITED)
-VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'qr_code_1615182105575.png&qr_code2_1615182105576.png&qr_code3_1615182105576.png&', '2021-03-07', '2021-03-07');
+VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'example4_1615270201245.mp4&', '2021-03-07', '2021-03-07');
 INSERT
   INTO NOTICE
        (WRITER, TITLE, CONTENT, FILENAME, REGDATE, LASTEDITED)
-VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'qr_code_1615182105575.png&qr_code2_1615182105576.png&qr_code3_1615182105576.png&', '2021-03-08', '2021-03-08');
+VALUES ('admin', '공지사항 입니다.', '공지사항 테스트 입니다.', 'example_1615269758074.jpg&example2_1615269758075.jpg&', '2021-03-08', '2021-03-08');
 
 

@@ -33,12 +33,11 @@ public class NoticeUpdateCommand implements NoticeCommand {
 		String[] removefiles = multipartRequest.getParameterValues("removeFilename");
 		String[] originfiles = multipartRequest.getParameterValues("originFilename");
 		
-		String allImages = "";
-		int result = 0;
+		String allFiles = "";
 		
 		String realPath = multipartRequest.getServletContext().getRealPath("resources/storage/notice");
 
-		if(removefiles.length > 0) {
+		if(removefiles != null && removefiles.length > 0) {
 			for (String filename : removefiles) {
 				File file = new File(realPath, filename);
 				if (file.exists()) {
@@ -47,9 +46,9 @@ public class NoticeUpdateCommand implements NoticeCommand {
 			}
 		}
 
-		if(originfiles.length > 0) {
+		if(originfiles != null && originfiles.length > 0) {
 			for (String filename : originfiles) {
-				allImages += filename + "&";
+				allFiles += filename + "&";
 			}
 		}
 		
@@ -77,24 +76,21 @@ public class NoticeUpdateCommand implements NoticeCommand {
 
 					try {
 						file.transferTo(uploadFile);
-						// uploadFilename = URLEncoder.encode(uploadFilename,"utf-8");
 
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					
-					allImages += uploadFilename + "&";
+					allFiles += uploadFilename + "&";
 
 				}  // if(file != null) {
 				
 			} // for (MultipartFile file : files) {
-			System.out.println("allImages: " + allImages);
-			result = noticeMapper.update(title, content, allImages, no);
+			noticeMapper.update(title, content, allFiles, no);
 			
 		} else { // 첨부가 없는 데이터를 테이블에 저장합니다.
-			result = noticeMapper.update(title, content, allImages, no);
+			noticeMapper.update(title, content, allFiles, no);
 		}
-		model.addAttribute("noticeUpdateResult", result);
 		
 	}
 

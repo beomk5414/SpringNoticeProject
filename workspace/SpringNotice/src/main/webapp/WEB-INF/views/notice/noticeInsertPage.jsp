@@ -64,7 +64,7 @@
 			</div>
 			<div class="form-group">
 				<label for="writer">작성자<span class="require">*</span></label>
-				<input type="text" class="form-control" id="writer" name="writer" value="${loginDto.id}" style="width: 30%">
+				<input type="text" class="form-control" id="writer" name="writer" readonly value="${loginDto.id}" style="width: 30%">
 			</div>
 			<div class="form-group">
 				<label for="smartEditor">내용</label>
@@ -75,7 +75,6 @@
 				<input type="file" class="form-control" name="filename" id="filename" style="width: 50%" multiple/>
 			</div><br/>
 			<div class="form-group">
-				<!-- <label for="title">첨부 파일/이미지 (복수 등록 가능)</label> -->
 				<img id="captchaImg" src="" style="width:300px; margin-bottom: 10px" alt="캡차이미지" /><br/>
 				<input type="text" class="form-control" name="input_key" placeholder="자동입력 방지문자" style="width: 30%; display: inline-block;" />
 				<input class="btn btn-default" type="button" value="새로고침" onclick="fn_getImageCaptcha()"/><br/><br/>
@@ -146,10 +145,5 @@
 				}
 			});
 		}
- 		/* if(conform('게시물을 등록'){ 
-			f.action = 'noticeInsert.do'; 
-			f.submit(); 
-		} */
-		
 	}
 </script>

@@ -26,8 +26,7 @@ public class NoticeInsertCommand implements NoticeCommand {
 		String content = multipartRequest.getParameter("content");
 
 		List<MultipartFile> files = multipartRequest.getFiles("filename");
-		String allImages = "";
-		int result = 0;
+		String allFiles = "";
 		
 		if (files != null && !files.isEmpty()) {
 			
@@ -54,25 +53,21 @@ public class NoticeInsertCommand implements NoticeCommand {
 
 					try {
 						file.transferTo(uploadFile);
-						// uploadFilename = URLEncoder.encode(uploadFilename,"utf-8");
 
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					
-					allImages += uploadFilename + "&";
+					allFiles += uploadFilename + "&";
 
 				}  // if(file != null) {
 				
 			} // for (MultipartFile file : files) {
-			System.out.println("allImages: " + allImages);
-			result = noticeMapper.insert(writer, title, content, allImages);
+			noticeMapper.insert(writer, title, content, allFiles);
 			
-		} else { // 첨부가 없는 데이터를 테이블에 저장합니다.
-			result = noticeMapper.insert(writer, title, content, allImages);
+		} else { // 첨부가 없는 데이터 저장.
+			noticeMapper.insert(writer, title, content, allFiles);
 		}
-		model.addAttribute("noticeInsertResult", result);
-		
 	}
 
 }
