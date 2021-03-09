@@ -1,9 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java-web,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java-web,java
 
-### Eclipse ###
+### Eclipse ### 
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
